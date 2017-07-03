@@ -63,7 +63,9 @@
     [self.collision addBoundaryWithIdentifier:@"line4" fromPoint:point4 toPoint:point1];
      */
     for (int i = 0; i<dataArray.count; i++) {
-        RoundImageView *imageView = [[RoundImageView alloc]initWithFrame:CGRectMake(self.bounds.size.width/2, self.bounds.size.height/2, 30, 30)];
+        CGFloat x = i*15;
+        CGFloat y = 0;
+        RoundImageView *imageView = [[RoundImageView alloc]initWithFrame:CGRectMake(x, y, 30, 30)];
         imageView.layer.masksToBounds = YES;
         imageView.backgroundColor =  [UIColor colorWithRed:arc4random() % 256/255.0 green:arc4random() % 256/255.0 blue:arc4random() % 256/255.0 alpha:0.5];
         imageView.layer.cornerRadius = imageView.bounds.size.width/2;
@@ -82,6 +84,7 @@
                 if (!error) {
                     double X = motion.gravity.x;
                     double Y = motion.gravity.y;
+                    double Z = motion.gravity.z;
                     self.gravity.gravityDirection = CGVectorMake(X, -Y);
                     [self.dynamicAnimator addBehavior:self.gravity];
                     [self.dynamicAnimator addBehavior:self.collision];
