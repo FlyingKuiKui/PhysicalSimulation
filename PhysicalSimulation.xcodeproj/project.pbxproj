@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		742E346A1F09D7B0008F443B /* RoundImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 742E34691F09D7B0008F443B /* RoundImageView.m */; };
 		74C7798C1F04E3A800A5FD7C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C7798B1F04E3A800A5FD7C /* main.m */; };
 		74C7798F1F04E3A800A5FD7C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C7798E1F04E3A800A5FD7C /* AppDelegate.m */; };
 		74C779921F04E3A800A5FD7C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C779911F04E3A800A5FD7C /* ViewController.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		742E34681F09D7B0008F443B /* RoundImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundImageView.h; sourceTree = "<group>"; };
+		742E34691F09D7B0008F443B /* RoundImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundImageView.m; sourceTree = "<group>"; };
 		74C779871F04E3A800A5FD7C /* PhysicalSimulation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhysicalSimulation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74C7798B1F04E3A800A5FD7C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		74C7798D1F04E3A800A5FD7C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				74C779911F04E3A800A5FD7C /* ViewController.m */,
 				74C779BD1F04E3D400A5FD7C /* PhysicalView.h */,
 				74C779BE1F04E3D400A5FD7C /* PhysicalView.m */,
+				742E34681F09D7B0008F443B /* RoundImageView.h */,
+				742E34691F09D7B0008F443B /* RoundImageView.m */,
 				74C779931F04E3A800A5FD7C /* Main.storyboard */,
 				74C779961F04E3A800A5FD7C /* Assets.xcassets */,
 				74C779981F04E3A800A5FD7C /* LaunchScreen.storyboard */,
@@ -294,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74C779921F04E3A800A5FD7C /* ViewController.m in Sources */,
+				742E346A1F09D7B0008F443B /* RoundImageView.m in Sources */,
 				74C779BF1F04E3D400A5FD7C /* PhysicalView.m in Sources */,
 				74C7798F1F04E3A800A5FD7C /* AppDelegate.m in Sources */,
 				74C7798C1F04E3A800A5FD7C /* main.m in Sources */,
@@ -534,6 +540,7 @@
 				74C779B61F04E3A800A5FD7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		74C779B71F04E3A800A5FD7C /* Build configuration list for PBXNativeTarget "PhysicalSimulationTests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +549,7 @@
 				74C779B91F04E3A800A5FD7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		74C779BA1F04E3A800A5FD7C /* Build configuration list for PBXNativeTarget "PhysicalSimulationUITests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +558,7 @@
 				74C779BC1F04E3A800A5FD7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "PhysicalView.h"
-
 @interface ViewController ()
 
 @end
@@ -17,8 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     PhysicalView *view = [[PhysicalView alloc]initWithFrame:CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 200)];
-    view.dataArray = @[@"1",@"2",@"3",@"4",@"5"];
+    view.dataArray = @[@"1",@"2",@"3",@"4",@"5",@"2",@"3",@"4",@"5",@"2",@"3",@"4",@"5",@"2",@"3",@"4",@"5"];
     [self.view addSubview:view];
     // Do any additional setup after loading the view, typically from a nib.
 }

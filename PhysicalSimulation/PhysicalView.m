@@ -8,12 +8,13 @@
 
 #import "PhysicalView.h"
 #import <CoreMotion/CoreMotion.h>
+#import "RoundImageView.h"
 
 @interface PhysicalView ()
 @property (nonatomic,strong) UIDynamicAnimator *dynamicAnimator; // 物理仿真器
 @property (nonatomic,strong) UIGravityBehavior *gravity; // 重力行为
 @property (nonatomic,strong) UICollisionBehavior *collision;// 碰撞行为
-@property (nonatomic,strong) CMMotionManager *mManager;
+@property (nonatomic,strong) CMMotionManager *motionManager; // 陀螺仪等
 
 @end
 
@@ -24,17 +25,16 @@
     }
     return _dynamicAnimator;
 }
-- (CMMotionManager *)mManager{
-    if (!_mManager) {
-        _mManager = [[CMMotionManager alloc]init];
+- (CMMotionManager *)motionManager{
+    if (!_motionManager) {
+        _motionManager = [[CMMotionManager alloc]init];
     }
-    return _mManager;
+    return _motionManager;
 }
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor grayColor];
-        [self.mManager startMagnetometerUpdates];
     }
     return self;
 }
@@ -63,21 +63,39 @@
     [self.collision addBoundaryWithIdentifier:@"line4" fromPoint:point4 toPoint:point1];
      */
     for (int i = 0; i<dataArray.count; i++) {
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 30, 30, 30)];
+        RoundImageView *imageView = [[RoundImageView alloc]initWithFrame:CGRectMake(self.bounds.size.width/2, self.bounds.size.height/2, 30, 30)];
         imageView.layer.masksToBounds = YES;
         imageView.backgroundColor =  [UIColor colorWithRed:arc4random() % 256/255.0 green:arc4random() % 256/255.0 blue:arc4random() % 256/255.0 alpha:0.5];
         imageView.layer.cornerRadius = imageView.bounds.size.width/2;
+        imageView.collisionBoundsType = UIDynamicItemCollisionBoundsTypeEllipse;
         [self addSubview:imageView];
         [self.gravity addItem:imageView];
         [self.collision addItem:imageView];
     }
-    [self addSomeBehavior];
+    [self getDataDeviceMotion];
 }
-- (void)addSomeBehavior{
-    self.gravity.gravityDirection = CGVectorMake(-1, -1);
-    [self.dynamicAnimator addBehavior:self.gravity];
-    [self.dynamicAnimator addBehavior:self.collision];
+#pragma mark - CMMotionManager
+- (void)getDataDeviceMotion{
+    if ([self.motionManager isDeviceMotionAvailable]) {
+        [self.motionManager setDeviceMotionUpdateInterval:1/60];
+        [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]    withHandler:^(CMDeviceMotion * _Nullable motion, NSError * _Nullable error) {
+                if (!error) {
+                    double X = motion.gravity.x;
+                    double Y = motion.gravity.y;
+                    self.gravity.gravityDirection = CGVectorMake(X, -Y);
+                    [self.dynamicAnimator addBehavior:self.gravity];
+                    [self.dynamicAnimator addBehavior:self.collision];
+                }else{
+                    [self.motionManager stopDeviceMotionUpdates];
+                }
+        }];
+    }else{
+        self.gravity.gravityDirection = CGVectorMake(0, 1);
+        [self.dynamicAnimator addBehavior:self.gravity];
+        [self.dynamicAnimator addBehavior:self.collision];
+    }
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
