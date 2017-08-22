@@ -85,7 +85,7 @@
                     double X = motion.gravity.x;
                     double Y = motion.gravity.y;
                     double Z = motion.gravity.z;
-                    self.gravity.gravityDirection = CGVectorMake(X, -Y);
+                    self.gravity.gravityDirection = CGVectorMake(2*X, -2*Y);
                     [self.dynamicAnimator addBehavior:self.gravity];
                     [self.dynamicAnimator addBehavior:self.collision];
                 }else{
