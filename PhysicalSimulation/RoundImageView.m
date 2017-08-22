@@ -9,6 +9,7 @@
 #import "RoundImageView.h"
 
 @implementation RoundImageView
+// 重写UIDynamicItem 中的属性，处理图形的圆形问题
 @synthesize collisionBoundsType;
 
 /*

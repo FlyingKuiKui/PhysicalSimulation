@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RoundImageView : UIImageView
+// 重写UIDynamicItem 中的属性，处理图形的圆形问题
 @property (nonatomic,assign) UIDynamicItemCollisionBoundsType collisionBoundsType;
 
 @end
